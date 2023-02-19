@@ -78,7 +78,7 @@ const Login = () => {
         <PrimaryButton onClick={handleSignIn} text={"LOGIN"}/>
       </Box>
       <Box sx={{display:"flex", width:"100%", justifyContent:"center"}}>
-        <Typography sx={{mt:"5px", fontSize:"0.9rem" ,color:"gray"}}>Don't have an account?</Typography>
+        <Typography sx={{mt:"5px", fontSize:"0.9rem" ,color:"gray"}}>Don&apos;t have an account?</Typography>
         <Typography sx={{mt:"5px", fontSize:"0.9rem" ,color:"black", cursor:"pointer", ml:"5px"}} onClick={()=>setMode(1)}>Sign Up</Typography>
       </Box>
       <Box sx={{display:"flex", justifyContent:"center", mt:"20px"}}>

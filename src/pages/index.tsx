@@ -1,17 +1,30 @@
-import { Button } from '@mui/material'
 import { Box } from '@mui/system'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { PrimaryButton } from '../components/common/PrimaryButton'
+
+import { auth } from '../config'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const [user, setUser] = useState<any>("");
+  useEffect(() => {
+    const unsubscribed = auth.onAuthStateChanged((user) => {
+      console.log("user: ",user);
+      setUser(user);
+    })},[]);
+  
   return (
-    <Box sx={{backgroundColor:"#F3E8E2", height:"100vh", width:"100%"}}>
+    <Box sx={{my:"auto",background:"url(bg-gradient.png)", height:"100vh", width:"100%"}}>
       <Box sx={{justifyContent:"center", display:"flex"}}>
         <Image src="/Artboard.png" alt="top" width={300} height={400}  />
       </Box>
       <Box sx={{justifyContent:"center", display:"flex"}}>
-        <Button sx={{mt:"30px", backgroundColor:"#E89897", color:"white", p:"10px 20px", borderRadius:"30px", width:"100px" }}>LOGIN</Button>
+        <Link href="login" style={{textDecoration:"none"}}>
+          <PrimaryButton text="Sign In" />
+        </Link>
       </Box>  
     </Box>
   )

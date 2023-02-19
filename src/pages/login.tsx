@@ -2,10 +2,8 @@ import { Box, TextField, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-
 import TwitterLoginButton from "../components/common/TwitterLoginButton";
 import { auth } from "../config";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { PrimaryButton } from "../components/common/PrimaryButton";
 import { useRouter } from "next/router";
 

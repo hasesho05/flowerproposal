@@ -14,7 +14,7 @@ import {
 } from 'firebase/auth'
 import { TwitterAuthProvider, GoogleAuthProvider } from 'firebase/auth'
 import {getFirestore} from 'firebase/firestore'
-import { getStorage, ref, listAll } from 'firebase/storage'
+import { getStorage, ref} from 'firebase/storage'
 
 export const app = initializeApp(firebaseConfig)
 export const db = getFirestore(app)

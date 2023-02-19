@@ -1,12 +1,10 @@
 import { Box } from '@mui/system'
-import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { PrimaryButton } from '../components/common/PrimaryButton'
 
 import { auth } from '../config'
-import styles from '../styles/Home.module.css'
 
 export default function Home() {
   const [user, setUser] = useState<any>("");

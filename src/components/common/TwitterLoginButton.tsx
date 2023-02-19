@@ -7,7 +7,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 
-const TwitterLoginButton = React.memo(() => { 
+const TwitterLoginButton = (() => { 
   const router = useRouter()
   const TwitterLogin = () => {
     signInWithPopup(auth, twitterProvider).then( async (result) => {

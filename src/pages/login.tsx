@@ -44,7 +44,7 @@ const Login = () => {
       .then(result => {
         const user = result.user
         console.log(user);
-        
+        router.push("/top")
         if(user) {
           const uid = user.uid
         }}).catch((error) => {

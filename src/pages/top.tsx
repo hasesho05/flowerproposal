@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import GlassButton from "../components/common/GlassButton";
 import { auth } from "../config";
 
-const top = () => {
+const Top = () => {
   const router = useRouter()
   const [user, setUser] = useState<any>("");
   useEffect(() => {
@@ -42,4 +42,4 @@ const top = () => {
   );
 }
 
-export default top;
+export default Top;

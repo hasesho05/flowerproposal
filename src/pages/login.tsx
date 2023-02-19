@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 
 
 
-const login = () => {
+const Login = () => {
   const router = useRouter()
   const [mode, setMode] = useState(0)
   const [email, setEmail] = useState("");
@@ -120,4 +120,4 @@ const login = () => {
   );
 }
 
-export default login;
+export default Login;

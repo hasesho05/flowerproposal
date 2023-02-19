@@ -16,6 +16,7 @@ const login = () => {
   const [mode, setMode] = useState(0)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const inputEmail = (e:any) => {
     setEmail(e.target.value)
@@ -36,7 +37,7 @@ const login = () => {
       .catch((error) => {
         const errorCode = error.code;
         console.log(errorCode);
-        
+        setMessage("Invalid email or password")
       });
     }
 
@@ -51,6 +52,7 @@ const login = () => {
         }}).catch((error) => {
           const errorCode = error.code;
           console.log(errorCode);
+          setMessage("Invalid email or password")
     });
   }
 
@@ -65,12 +67,13 @@ const login = () => {
       </Stack>
       
       <Stack spacing={2}>
-        <TextField fullWidth label="Email Address" onChange={(e)=> inputEmail(e)}/>
-        <TextField fullWidth label="password" type="password" onChange={(e)=>inputPassword(e)}/>
+        <TextField fullWidth label="Email Address" required onChange={(e)=> inputEmail(e)}/>
+        <TextField fullWidth label="password" required type="password" onChange={(e)=>inputPassword(e)}/>
       </Stack>
       <Box sx={{display:"flex", width:"100%", justifyContent:"end"}}>
           <Typography sx={{mt:"5px", fontSize:"0.9rem" ,color:"gray", cursor:"pointer"}}>Forgot Password?</Typography>
       </Box>
+      <Typography sx={{color:"red"}}>{message}</Typography>
       <Box sx={{display:"flex", justifyContent:"center"}}>
         <PrimaryButton onClick={handleSignIn} text={"LOGIN"}/>
       </Box>
@@ -95,10 +98,10 @@ const login = () => {
         
         <Stack spacing={2}>
           <TextField fullWidth label="Name" />
-          <TextField fullWidth label="Email Address" onChange={(e)=>inputEmail(e)}/>
-          <TextField fullWidth label="Password" type="password" onChange={(e)=>inputPassword(e)}/>
+          <TextField fullWidth label="Email Address" required onChange={(e)=>inputEmail(e)}/>
+          <TextField fullWidth label="Password" required type="password" onChange={(e)=>inputPassword(e)}/>
         </Stack>
-
+        <Typography sx={{color:"red"}}>{message}</Typography>
         <Box  onClick={handleSignup} sx={{display:"flex", justifyContent:"center"}}>
           <PrimaryButton  onClick={handleSignup} text={"SIGN UP"}/>
         </Box>

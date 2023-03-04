@@ -26,8 +26,8 @@ const TwitterLoginButton = (() => {
     })
   }  
   return (
-    <Button sx={{borderRadius:"20px"}} color="primary" variant="contained" startIcon={<TwitterIcon />}  onClick={TwitterLogin} >
-      Twitterで認証
+    <Button sx={{p:1.5, borderRadius:"5px", backgroundColor:"#1D9BF0", color:"white", textTransform:"none"}} variant="contained" startIcon={<TwitterIcon />}  onClick={TwitterLogin} >
+      Login with Twitter
     </Button>
   );
 })

@@ -13,9 +13,9 @@ export const PrimaryButton = (props:Props) => {
     mt:"30px", 
     backgroundColor:"#E89897", 
     color:"white", 
-    p:"10px 30px", 
     borderRadius:"30px", 
-    width:"190px",
+    width:"100%",
+    maxWidth:"300px",
     fontSize:"1.3rem",
     ":hover": {
       backgroundColor:"#E89897",

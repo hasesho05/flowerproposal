@@ -2,6 +2,8 @@ import Head from 'next/head';
 import { Box, Container } from '@mui/material';
 import React from 'react';
 import Header from './Header';
+import { motion } from 'framer-motion';
+
 
 interface Props {
   children: React.ReactNode;

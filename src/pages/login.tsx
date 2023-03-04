@@ -6,6 +6,7 @@ import TwitterLoginButton from "../components/common/TwitterLoginButton";
 import { auth } from "../config";
 import { PrimaryButton } from "../components/common/PrimaryButton";
 import { useRouter } from "next/router";
+import Animation from "../components/Animation";
 
 
 
@@ -55,7 +56,7 @@ const Login = () => {
   }
 
   return (
-    <>
+    <Animation>
     {mode === 0 &&
     <Box sx={{backgroundColor:"F3E8E2", height:"100vh", width:"100%", position:"fixed"}}>
     <Box sx={{p:"50px", pt:"100px"}}>
@@ -119,7 +120,7 @@ const Login = () => {
     </Box>
     }
     
-    </>
+    </Animation>
   );
 }
 

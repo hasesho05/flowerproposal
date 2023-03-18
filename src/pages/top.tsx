@@ -1,23 +1,48 @@
 import { Typography } from "@mui/material";
 import { Box, Stack } from "@mui/system";
+import { collection, getDocs } from "firebase/firestore";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Animation from "../components/Animation";
-import GlassButton from "../components/common/GlassButton";
-import { auth } from "../config";
+import { auth, db } from "../config";
 
 const Top = () => {
   const router = useRouter()
   const [user, setUser] = useState<any>("");
+  const [post, setPost] = useState<any>(null);
+  const getRandomDocument = async () => {
+    // 1. Firestore からすべてのドキュメントを取得します。
+    const postRef = collection(db, "posts");
+    const snapshot = await getDocs(postRef);
+    const postArray:any[] = [];
+  
+    snapshot.forEach((doc) => {
+      postArray.push({ id: doc.id, ...doc.data() });
+    });
+  
+    // 2. ランダムなインデックスを生成し、対応するドキュメントを選択します。
+    const randomIndex = Math.floor(Math.random() * postArray.length);
+    const randomDocument = postArray[randomIndex];
+  
+    return randomDocument;
+  };
+  
+  
   useEffect(() => {
     const unsubscribed = auth.onAuthStateChanged((user) => {
       setUser(user);
       if(!user) {
         router.push("/login")
       }
-    })},[]);
+    })
+    getRandomDocument().then((randomDoc) => {
+      console.log("ランダムなドキュメント: ", randomDoc);
+      setPost(randomDoc)
+    });
+  
+  },[]);
   
   return (
     <Animation>
@@ -28,13 +53,13 @@ const Top = () => {
           </Box>
         <Box sx={{display:"flex", width:"100%"}}>
           <Box sx={{justifyContent:"center", display:"flex", width:"100%", position:"relative", overflow:"hidden"}}>
-            <Link href="/message">
+            <Link href={`/message/${post?.id}`}>
               <Image src="/login/69.png" alt="top" width={350} height={350} style={{marginLeft:"100px"}}/>
             </Link>
           </Box>
         </Box>
         <Box sx={{width:"100%", backgroundSize:"contain", backgroundRepeat:"no-repeat", transform:"translateY(-100px)", justifyContent:"center"}}>
-        <img className="login_img" src="/login/60.png" style={{position:"absolute", width:"500px", transform:"translate(-250px,-50px)", left:"50%", zIndex:"-1"}}  />
+        <img className="login_img" src="/login/21.png" style={{position:"absolute", width:"600px", transform:"translate(-270px,-80px) rotate(-10deg)", left:"50%", zIndex:"-1"}}  />
           <Box display="flex" gap={2} justifyContent="center">
             <img src="/button/MyPage.png" style={{width:"100px", marginTop:"50px"}}/>
             <img src="/button/Message.png" style={{width:"100px", marginTop:"50px"}}/>

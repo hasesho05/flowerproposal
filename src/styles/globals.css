@@ -17,3 +17,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.center {
+  font-size: 18px;
+  color: gray;
+  line-height: 16px;
+  justify-content: center;
+  text-align: center;
+}

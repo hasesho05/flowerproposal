@@ -1,6 +1,7 @@
 import { Box } from '@mui/system'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { PrimaryButton } from '../components/common/PrimaryButton'
 
@@ -8,11 +9,14 @@ import { auth } from '../config'
 
 export default function Home() {
   const [user, setUser] = useState<any>("");
+  const router = useRouter()
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
+    const unsubscribed = auth.onAuthStateChanged((user) => {
       setUser(user);
+      if(user) {
+        router.push("/top")
+      }
     })},[]);
-  
   return (
     <Box sx={{my:"auto",background:"#F3E8E2", height:"100vh", width:"100%"}}>
       <Box sx={{justifyContent:"center", display:"flex", pt:"70px"}}>

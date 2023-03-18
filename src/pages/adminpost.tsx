@@ -28,6 +28,13 @@ const AdminPost: React.FC = () => {
   const [previewModalOpen, setPreviewModalOpen] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if(!title || !engTitle || !headline || !content || !image) {
+      setMessage("入力されていない項目があります");
+      setSeverity("error");
+      setOpen(true);
+      return;
+    }
     NProgress.start();
     setIsPosted(true);
     e.preventDefault();
@@ -40,7 +47,7 @@ const AdminPost: React.FC = () => {
       setMessage("投稿しました");
       setSeverity("success");
       setOpen(true);
-
+  
       setTitle("");
       setEngTitle("");
       setHeadline("");
@@ -49,6 +56,7 @@ const AdminPost: React.FC = () => {
       setIsPosted(false);
     }
   };
+  
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
